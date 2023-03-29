@@ -1,7 +1,28 @@
 const containerEl = document.querySelector(".container");
 
-for (let index = 0; index < 30; index++) {
-    const colorContainerEl = document.createElement("div");
-    colorContainerEl.classList.add("color-container");
-    containerEl.appendChild(colorContainerEl);
+
+
+function randomColor() {
+    const chars = "0123456789abcdef"
+    let color = "";
+    for (let i = 0; i< 6; i++) {
+        let randNum = Math.floor(Math.random() * chars.length);
+        
+        color += chars.substring(randNum, randNum + 1);
+        console.log(color);
+    }
+    return color;
 }
+
+function colorGenerator() {
+    for (let index = 0; index < 30; index++) {
+        const colorContainerEl = document.createElement("div");
+        colorContainerEl.classList.add("color-container");
+        colorContainerEl.innerText = "#" + randomColor();
+        colorContainerEl.style.backgroundColor = colorContainerEl.innerText;
+        containerEl.appendChild(colorContainerEl);
+        
+    }
+}
+
+colorGenerator();
