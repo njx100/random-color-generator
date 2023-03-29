@@ -1,5 +1,5 @@
 const containerEl = document.querySelector(".container");
-
+const btnEl = document.getElementById("btn");
 
 
 function randomColor() {
@@ -14,7 +14,15 @@ function randomColor() {
     return color;
 }
 
+function colorClear() {
+    while (containerEl.hasChildNodes()) {
+        containerEl.removeChild(containerEl.firstChild);
+    }
+}
+
+
 function colorGenerator() {
+    colorClear();
     for (let index = 0; index < 30; index++) {
         const colorContainerEl = document.createElement("div");
         colorContainerEl.classList.add("color-container");
@@ -26,3 +34,4 @@ function colorGenerator() {
 }
 
 colorGenerator();
+btnEl.addEventListener("click", colorGenerator);
